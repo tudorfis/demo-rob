@@ -1,0 +1,48 @@
+<div data-ng-controller="AuthCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>
+                <span class="glyphicon glyphicon-th"></span> Login
+            </strong>
+        </div>
+        <div class="panel-body">
+            <form name="form" class="form-horizontal form-validation" data-ng-submit="login()">
+                <fieldset>
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <label for="user.email">Email</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" ng-required="true" data-ng-model="user.email" id="user.email" name="email" />
+                            <div data-ng-show="form.$submitted || form.email.$touched">
+                                <div class="divider"></div>
+                                <span class="alert alert-danger col-xs-12" ng-show="form.email.$error.required">* Email required for login</span>
+                                <span class="alert alert-danger col-xs-12" ng-show="form.email.$error.email">* Enter a valid email address</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <label for="user.password">Password</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" required data-ng-model="user.password" id="user.password" name="password" />
+                            <div data-ng-show="form.$submitted || form.password.$touched">
+                                <div class="divider"></div>
+                                <span class="alert alert-danger col-xs-12" ng-show="form.password.$error.required">* Password is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <a href="#/auth/forgot-password" class="pull-right">
+                            <span data-translate="FORGOT_PASSWORD"></span> ?
+                        </a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-w-md">Login</button>
+                    <div class="divider"></div>
+                    <div class="{{alert.class}}" data-ng-show="alert.show">{{alert.message}}</div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
