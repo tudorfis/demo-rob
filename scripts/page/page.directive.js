@@ -25,6 +25,8 @@
                 $element.removeClass('body-wide body-err body-lock body-auth');
                 switch (path) {
                     case '/auth/login':
+                    case '/auth/register':
+                    case '/auth/forgot-password':
                         return $element.addClass('body-wide body-auth');
                     case '/404':
                     case '/pages/404':
