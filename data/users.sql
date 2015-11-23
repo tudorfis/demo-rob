@@ -40,9 +40,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `role`) VALUES
-(1, 'tudor.fis@gmail.com', '393c853c183af6327116dd773b8f9c11', 'Tudor', 'Fis', 1),
-(2, 'mata@gmail.com', '393c853c183af6327116dd773b8f9c11', 'Todorescu', 'Tudor', 1),
-(4, 'ion@gmail.com', '393c853c183af6327116dd773b8f9c11', 'Todorescu', 'Tudor', 1);
+(1, 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'Admin', 'Admin', 1);
 
 --
 -- Indexes for dumped tables
@@ -62,7 +60,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

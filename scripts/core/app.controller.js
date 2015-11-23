@@ -14,7 +14,7 @@
         var year = date.getFullYear();
 
         s.main = {
-            brand: 'Demo Rob',
+            brand: 'DML WebApp',
             name: 'Rob Whittlesey',
             year: year
         };
