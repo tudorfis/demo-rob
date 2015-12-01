@@ -1,0 +1,48 @@
+<div class="page page-dashboard" data-ng-controller="ProjectsCtrl">
+    <div class="panel panel-default">
+        <div class="panel-body table-responsive">
+            <div class="pull-right">
+                <button type="button" class="btn btn-w-sm btn-gap-v btn-primary" ng-click="openUpdateProject({})">
+                    <i class="fa fa-plus-circle"></i> Add
+                </button>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Project</th>
+                        <th>Status</th>
+                        <th>Manager</th>
+                        <th>Progress</th>
+                        <th class="col-xs-1">&nbsp;</th>
+                        <th class="col-xs-1">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="projects" ng-repeat="p in projects">
+                        <td>{{p.id}}</td>
+                        <td>{{p.project}}</td>
+                        <td>
+                            <span class="{{statusProject[p.status].class}}">{{statusProject[p.status].v}}</span>
+                        </td>
+                        <td>{{p.manager}}</td>
+                        <td>{{p.progress}}</td>
+                        <td class="col-xs-1">
+                            <button type="button" class="btn btn-w-sm btn-gap-v btn-success" ng-click="openUpdateProject(p)">
+                                <i class="fa fa-edit"></i> Edit
+                            </button>
+                        </td>
+                        <td class="col-xs-1">
+                            <button type="button" class="btn btn-w-md btn-gap-v btn-danger" ng-click="openDeleteProject(p)">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div ng-include="'views/projects/update-project.html'"></div>
+    <div ng-include="'views/projects/delete-project.html'"></div>
+</div>
+  

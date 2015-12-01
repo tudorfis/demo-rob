@@ -18,7 +18,7 @@
                 if (res.user) {
                     rs.user = res.user;
                     localStorage.setItem('user', JSON.stringify(rs.user));
-                    $location.path('/dashboard')
+                    $location.path('/projects')
                 } else {
                     s.alert = {
                         show: 1,

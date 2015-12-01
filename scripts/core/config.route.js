@@ -6,15 +6,7 @@
             var routes, setRoutes;
 
             routes = [
-                'dashboard',
-                'auth/login', 'auth/register', 'auth/forgot-password', 'auth/profile',
-                'ui/typography', 'ui/buttons', 'ui/icons', 'ui/grids', 'ui/widgets', 'ui/components', 'ui/boxes', 'ui/timeline', 'ui/nested-lists', 'ui/pricing-tables', 'ui/maps',
-                'tables/static', 'tables/dynamic', 'tables/responsive',
-                'forms/elements', 'forms/layouts', 'forms/validation', 'forms/wizard',
-                'charts/charts', 'charts/flot',
-                'pages/404', 'pages/500', 'pages/blank', 'pages/forgot-password', 'pages/invoice', 'pages/lock-screen', 'pages/profile', 'pages/invoice', 'pages/signin', 'pages/signup',
-                'mail/compose', 'mail/inbox', 'mail/single',
-                'app/tasks', 'app/calendar'
+                'auth/login', 'auth/register', 'auth/forgot-password', 'auth/profile'
             ];
 
             setRoutes = function(route) {
@@ -31,10 +23,13 @@
                 return setRoutes(route);
             });
 
+            $routeProvider.when('/projects', {
+                templateUrl: 'views/projects/projects.html'
+            });
+
             $routeProvider
-                .when('/', {redirectTo: '/dashboard'})
-                .when('/404', {templateUrl: 'views/pages/404.html'})
-                .otherwise({ redirectTo: '/404'});
+                .when('/', {redirectTo: 'projects'})
+                .otherwise({ redirectTo: '/'});
 
         }]
     );

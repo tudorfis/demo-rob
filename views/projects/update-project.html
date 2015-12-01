@@ -1,0 +1,58 @@
+<script type="text/ng-template" id="update-project.html">
+    <form name="frm_ep" ng-submit="updateProject(project)">
+        <div class="modal-header">
+            <h3>
+                <i class="fa fa-edit"></i>
+                {{project.id ? 'Edit' : 'Add'}} project
+                <span ng-show="project.id">
+                    - <i>"{{project.project}}"</i>
+                </span>
+            </h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="project.project">Project</label>
+                <input type="text" class="form-control" ng-model="project.project" id="project.project" name="project" required>
+                <div ng-show="frm_ep.$submitted || frm_ep.project.$touched">
+                    <span ng-show="frm_ep.project.$error.required" class="alert alert-danger col-xs-12">* Project name is required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="pull-right {{statusProject[project.status].class}}">{{statusProject[project.status].v}}</div>
+                <label for="project.status">Status:</label>
+                <select ng-model="project.status" id="project.status" name="status" class="form-control" required>
+                    <option ng-repeat="(sp_id, sp) in statusProject" value="{{sp_id}}" class="{{sp.class}}">{{sp.v}}</option>
+                </select>
+                <div ng-show="frm_ep.$submitted || frm_ep.status.$touched">
+                    <span ng-show="frm_ep.status.$error.required" class="alert alert-danger col-xs-12">* Status is required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="project.manager">Manager</label>
+                <input type="text" class="form-control" ng-model="project.manager" id="project.manager" name="manager" required>
+                <div ng-show="frm_ep.$submitted || frm_ep.manager.$touched">
+                    <span ng-show="frm_ep.manager.$error.required" class="alert alert-danger col-xs-12">* Manager is required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="project.progress">Progress</label>
+                <input type="text" class="form-control" ng-model="project.progress" id="project.progress" name="progress" required>
+                <div ng-show="frm_ep.$submitted || frm_ep.progress.$touched">
+                    <span ng-show="frm_ep.manager.$error.required" class="alert alert-danger col-xs-12">* Progress is required</span>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <alert ng-show="alert" type="{{alert.type}}" close="closeAlert()">
+                <i class="ti-check-box"></i> {{alert.msg}}
+            </alert>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary btn-w-md">
+                <i class="fa fa-check"></i> Save
+            </button>
+            <a href="" class="btn btn-danger btn-w-md" ng-click="cancelModal()">
+                <i class="fa fa-close"></i> Close
+            </a>
+        </div>
+    </form>
+</script>

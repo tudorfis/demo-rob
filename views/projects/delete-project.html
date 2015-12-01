@@ -1,0 +1,18 @@
+<script type="text/ng-template" id="delete-project.html">
+    <form name="frm_ep" ng-submit="deleteProject(project)">
+        <div class="modal-header">
+            <h3>
+                <i class="fa fa-trash"></i> Are you sure you want to delete <i>"{{project.project}}"</i> ?
+            </h3>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-w-md">
+                <i class="fa fa-check"></i> Yes
+            </button>
+            <a href="" class="btn btn-w-md" ng-click="cancelModal()">
+                <i class="fa fa-close"></i> No
+            </a>
+        </div>
+    </form>
+</script>

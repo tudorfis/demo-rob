@@ -63,6 +63,34 @@ app.post('/api/saveUser', function(req, res){
     });
 });
 
+app.get('/api/getProjects', function(req, res){
+    con.query('select * from `projects`', function(err, rows){
+        if (err) throw err;
+        res.send(rows);
+    });
+});
+
+app.post('/api/updateProject', function(req, res){
+    var query, query_vars;
+    query = ((req.body.id) ? 'update ' : 'insert ') +
+        ' `projects` SET `project` = ?, `status` = ?, `manager` = ?, `progress` = ?'+
+        ((req.body.id) ? ' where `id` = ?;' : ';');
+    query_vars = [req.body.project, req.body.status, req.body.manager, req.body.progress];
+    if (req.body.id) {
+        query_vars.push(req.body.id);
+    }
+    con.query(query, query_vars, function (err, q_res) {
+        if (err) throw err;
+        res.send(q_res);
+    });
+});
+
+app.post('/api/deleteProject', function(req, res) {
+    con.query("delete from `projects` where `id` = ?;", [req.body.id], function(err, q_res){
+        if (err) throw err;
+        res.send(q_res);
+    });
+});
 
 var port = 8080;
 server.listen(port);

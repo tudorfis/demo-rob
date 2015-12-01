@@ -241,118 +241,8 @@
                 </div>
             </li>
         </ul>
-
-            <!--
-                <li class="search-box visible-md visible-lg" ng-show="checkIfLoggedIn()">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="ti-search"></i></span>
-                        <input type="text" class="form-control" placeholder="{{ 'SEARCH' | translate }}">
-                    </div>
-                </li>
-                <li class="dropdown" dropdown is-open="status.isopenEmail" ng-show="checkIfLoggedIn()">
-                    <a href="javascript:;" dropdown-toggle ng-disabled="disabled">
-                        <i class="ti-email"></i>
-                        <span class="badge badge-danger">3</span>
-                    </a>
-                    <div class="dropdown-menu with-arrow panel panel-default">
-                        <div class="panel-heading">
-                            You have 3 mails.
-                        </div>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <a href="javascript:;" class="media">
-                                    <span class="media-left media-icon">
-                                        <span class="btn-icon btn-icon-round btn-warning"><i class="ti-email"></i></span>
-                                    </span>
-                                    <div class="media-body">
-                                        <span class="block">Lisa sent you a mail</span>
-                                        <span class="text-muted block">2min ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="javascript:;" class="media">
-                                    <span class="media-left media-icon">
-                                        <span class="btn-icon btn-icon-round btn-info"><i class="ti-email"></i></span>
-                                    </span>
-                                    <div class="media-body">
-                                        <span class="block">Jane sent you a mail</span>
-                                        <span class="text-muted">3 hours ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="javascript:;" class="media">
-                                    <span class="media-left media-icon">
-                                        <span class="btn-icon btn-icon-round btn-success"><i class="ti-email"></i></span>
-                                    </span>
-                                    <div class="media-body">
-                                        <span class="block">Lynda sent you a mail</span>
-                                        <span class="text-muted">9 hours ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="panel-footer">
-                            <a href="#/mail/inbox">Show all mails.</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="dropdown" dropdown is-open="status.isopenBell" ng-show="checkIfLoggedIn()">
-                    <a href="javascript:;" dropdown-toggle ng-disabled="disabled">
-                        <i class="ti-bell"></i>
-                        <span class="badge badge-info">3</span>
-                    </a>
-                    <div class="dropdown-menu with-arrow panel panel-default">
-                        <div class="panel-heading">
-                            You have 3 notifications.
-                        </div>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <a href="javascript:;" class="media">
-                                    <span class="media-left media-icon">
-                                        <span class="btn-icon btn-icon-round btn-success"><i class="ti-bell"></i></span>
-                                    </span>
-                                    <div class="media-body">
-                                        <span class="block">New tasks needs to be done</span>
-                                        <span class="text-muted block">2min ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="javascript:;" class="media">
-                                    <span class="media-left media-icon">
-                                        <span class="btn-icon btn-icon-round btn-info"><i class="ti-bell"></i></span>
-                                    </span>
-                                    <div class="media-body">
-                                        <span class="block">Change your password</span>
-                                        <span class="text-muted">3 hours ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="javascript:;" class="media">
-                                    <span class="media-left media-icon">
-                                        <span class="btn-icon btn-icon-round btn-danger"><i class="ti-bell"></i></span>
-                                    </span>
-                                    <div class="media-body">
-                                        <span class="block">New feature added</span>
-                                        <span class="text-muted">9 hours ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="panel-footer">
-                            <a href="#/mail/inbox">Show all notifications.</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            -->
-
-
         <ul class="nav-right pull-right list-unstyled">
-            <li class="dropdown text-normal nav-profile" dropdown is-open="status.isopenProfile" ng-show="checkIfLoggedIn()">
+            <li class="dropdown text-normal nav-profile" dropdown is-open="status.isopenProfile" ng-show="signedIn()">
                 <a href="javascript:;" dropdown-toggle ng-disabled="disabled">
                     <img src="images/no-profile.png" alt="" class="img-circle img30_30">
                     <span class="hidden-xs">
@@ -366,20 +256,6 @@
                             <span data-translate="MY_PROFILE"></span>
                         </a>
                     </li>
-                    <!--
-                    <li>
-                        <a href="#/app/tasks">
-                            <i class="ti-check-box"></i>
-                            <span data-translate="MY_TASKS"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/pages/lock-screen">
-                            <i class="ti-lock"></i>
-                            <span data-translate="LOCK"></span>
-                        </a>
-                    </li>
-                    -->
                     <li>
                         <a href="" data-ng-click="logoutUser()">
                             <i class="ti-export"></i>

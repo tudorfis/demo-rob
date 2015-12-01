@@ -167,9 +167,4 @@ pip-log.txt
 #############
 .idea/
 node_modules/
-bower_components/
-logs/
-.sass-cache/
-templates/
-test/
-websites/
+lib/
