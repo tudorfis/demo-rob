@@ -55,15 +55,8 @@
                 if (!project.id) {
                     project.id = res.insertId;
                     projectsCtrl.scope().projects.push(project);
-                    s.alert = {
-                        type: 'success',
-                        msg: 'New project added !'
-                    };
                 }
-                s.alert = {
-                    type: 'success',
-                    msg: 'Project successfully edited !'
-                };
+                s.cancelModal();
             });
         };
 
