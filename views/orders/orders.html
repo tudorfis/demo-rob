@@ -1,0 +1,46 @@
+<div class="page page-dashboard" data-ng-controller="OrdersCtrl">
+    <div class="panel panel-default">
+        <div class="panel-body table-responsive">
+            <div class="col-xs-3">
+                <button type="button" class="btn btn-w-sm btn-gap-v btn-primary" ng-click="openUpdateOrder({})">
+                    <i class="fa fa-plus-circle"></i> Add
+                </button>
+            </div>
+            <h4 ng-show="(orders | array).length == 0">* no orders yet, add a new order</h4>
+            <table class="table" ng-hide="(orders | array).length == 0">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Order</th>
+                    <th>Price</th>
+                    <th>Created by</th>
+                    <th>Date Created</th>
+                    <th class="col-xs-1">&nbsp;</th>
+                    <th class="col-xs-1">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="orders" ng-repeat="o in orders">
+                        <td>{{o.id}}</td>
+                        <td>{{o.order}}</td>
+                        <td>{{o.price}} $</td>
+                        <td>{{o.created_by}}</td>
+                        <td>{{o.date_created | date:'fullDate'}}</td>
+                        <td class="col-xs-1">
+                            <button type="button" class="btn btn-w-sm btn-gap-v btn-success" ng-click="openUpdateOrder(o)">
+                                <i class="fa fa-edit"></i> Edit
+                            </button>
+                        </td>
+                        <td class="col-xs-1">
+                            <button type="button" class="btn btn-w-md btn-gap-v btn-danger" ng-click="openDeleteOrder(o)">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div ng-include="'views/orders/update-order.html'"></div>
+<div ng-include="'views/orders/delete-order.html'"></div>

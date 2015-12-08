@@ -23,19 +23,14 @@
                 return setRoutes(route);
             });
 
-            $routeProvider.when('/projects', {
-                templateUrl: 'views/projects/projects.html'
-            });
-
-            $routeProvider.when('/orders', {
-                templateUrl: 'views/orders/orders.html'
-            });
-
-
-
             $routeProvider
+                .when('/projects', {templateUrl: 'views/projects/projects.html'})
+                .when('/orders', {templateUrl: 'views/orders/orders.html'})
+                .when('/products', {templateUrl: 'views/products/products.html'})
+                .when('/404', {templateUrl: 'views/pages/404.html'})
+                .when('/500', {templateUrl: 'views/pages/500.html'})
                 .when('/', {redirectTo: 'projects'})
-                .otherwise({ redirectTo: '/'});
+                .otherwise({ redirectTo: '/404'});
 
         }]
     );

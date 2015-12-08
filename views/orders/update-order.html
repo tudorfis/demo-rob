@@ -1,0 +1,70 @@
+<script type="text/ng-template" id="update-order.html">
+    <form name="frm_or" ng-submit="updateOrder(order)">
+        <div class="modal-header">
+            <h3>
+                <i class="fa fa-edit"></i>
+                {{order.id ? 'Edit' : 'Add'}} order
+                <span ng-show="order.id">
+                    - <i>"{{order.order}}"</i>
+                </span>
+            </h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="order.order">Order</label>
+                <input type="text" class="form-control" ng-model="order.order" id="order.order" name="order" required>
+                <div ng-show="frm_or.$submitted || frm_or.order.$touched">
+                    <span ng-show="frm_or.order.$error.required" class="alert alert-danger col-xs-12">* Order name is required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="order.price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control" ng-model="order.price" id="order.price" name="price" required>
+                </div>
+                <div ng-show="frm_or.$submitted || frm_or.order.$touched">
+                    <span ng-show="frm_or.price.$error.required" class="alert alert-danger col-xs-12">* Price name is required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="order.created_by">Created by</label>
+                <input type="text" class="form-control" ng-model="order.created_by" id="order.created_by" name="created_by" required>
+                <div ng-show="frm_or.$submitted || frm_or.created_by.$touched">
+                    <span ng-show="frm_or.created_by.$error.required" class="alert alert-danger col-xs-12">* Created by user is required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="order.date_created">Date created</label>
+                <div class="input-group">
+                    <input
+                       type="text"
+                       class="form-control"
+                       datepicker-popup="yyyy-MM-dd"
+                       ng-model="order.date_created"
+                       id="order.date_created"
+                       is-open="opened"
+                       ng-click="opened = 1"
+                       ng-focus="opened = 1"
+                       name="date_created"
+                       close-text="Close"
+                       required>
+                    <span class="input-group-addon" ng-click="opened = 1">
+                        <i class="ti-calendar"></i>
+                    </span>
+                </div>
+                <div ng-show="frm_or.$submitted || frm_or.date_created.$touched">
+                    <span ng-show="frm_or.date_created.$error.required" class="alert alert-danger col-xs-12">* Date created is required</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary btn-w-md">
+                <i class="fa fa-check"></i> Save
+            </button>
+            <a href="" class="btn btn-danger btn-w-md" ng-click="cancelModal()">
+                <i class="fa fa-close"></i> Close
+            </a>
+        </div>
+    </form>
+</script>

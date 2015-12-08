@@ -1,0 +1,54 @@
+<script type="text/ng-template" id="update-product.html">
+    <form name="frm_prd" ng-submit="updateProduct(product)">
+        <div class="modal-header">
+            <h3>
+                <i class="fa fa-edit"></i>
+                {{product.id ? 'Edit' : 'Add'}} product
+                <span ng-show="product.id">
+                    - <i>"{{product.product_name}}"</i>
+                </span>
+            </h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="product.product_name">Product</label>
+                <input type="text" class="form-control" ng-model="product.product_name" id="product.product_name" name="product_name" required>
+                <div ng-show="frm_prd.$submitted || frm_prd.product_name.$touched">
+                    <span ng-show="frm_prd.product_name.$error.required" class="alert alert-danger col-xs-12">* Product name is required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="product.price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control" ng-model="product.price" id="product.price" name="price" required>
+                </div>
+                <div ng-show="frm_prd.$submitted || frm_prd.product.$touched">
+                    <span ng-show="frm_prd.price.$error.required" class="alert alert-danger col-xs-12">* Price name is required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="product.quantity">Quantity</label>
+                <input type="text" class="form-control" ng-model="product.quantity" id="product.quantity" name="quantity" required>
+                <div ng-show="frm_prd.$submitted || frm_prd.quantity.$touched">
+                    <span ng-show="frm_prd.quantity.$error.required" class="alert alert-danger col-xs-12">* Created by user is required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="product.vendor">Vendor</label>
+                <input type="text" class="form-control" ng-model="product.vendor" id="product.vendor" name="vendor" required>
+                <div ng-show="frm_prd.$submitted || frm_prd.vendor.$touched">
+                    <span ng-show="frm_prd.vendor.$error.required" class="alert alert-danger col-xs-12">* Vendor name is required</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary btn-w-md">
+                <i class="fa fa-check"></i> Save
+            </button>
+            <a href="" class="btn btn-danger btn-w-md" ng-click="cancelModal()">
+                <i class="fa fa-close"></i> Close
+            </a>
+        </div>
+    </form>
+</script>

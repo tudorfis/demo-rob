@@ -14,6 +14,8 @@
 
         <!-- logged in -->
         <li data-ng-show="signedIn()"><a href="#/projects"><i class="ti-home"></i><span data-translate="PROJECTS"></span></a></li>
+        <li data-ng-show="signedIn() && ($root.user.role == 1 || $root.user.role == 2)"><a href="#/orders"><i class="fa fa-shopping-cart"></i><span data-translate="ORDERS"></span></a></li>
+        <li data-ng-show="signedIn() && ($root.user.role == 1)"><a href="#/products"><i class="fa fa-barcode"></i><span data-translate="PRODUCTS"></span></a></li>
         <li data-ng-show="signedIn()"><a href="" data-ng-click="logoutUser()"><i class="fa fa-sign-in"></i><span data-translate="LOGOUT"></span></a></li>
     </ul>
 </div>

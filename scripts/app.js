@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('app', [
+
         // Angular modules
         'ngRoute',
         'ngAnimate',
@@ -18,9 +19,23 @@
         'duScroll',
 
         // Custom modules
+        'app.nav',
         'app.i18n',
+        'app.chart',
+        'app.ui',
+        'app.ui.form',
+        'app.ui.form.validation',
+        'app.ui.map',
+        'app.page',
+        'app.table',
+        'app.task',
+        'app.calendar',
+
+        // Home made
         'app.auth',
-        'app.projects'
+        'app.projects',
+        'app.orders',
+        'app.products',
 
     ]);
 })();

@@ -63,6 +63,7 @@ app.post('/api/saveUser', function(req, res){
     });
 });
 
+/** PROJECTS **/
 app.get('/api/getProjects', function(req, res){
     con.query('select * from `projects`', function(err, rows){
         if (err) throw err;
@@ -91,6 +92,69 @@ app.post('/api/deleteProject', function(req, res) {
         res.send(q_res);
     });
 });
+
+/** ORDERS **/
+app.get('/api/getOrders', function(req, res){
+    con.query('select * from `orders`', function(err, rows){
+        if (err) throw err;
+        res.send(rows);
+    });
+});
+
+app.post('/api/updateOrder', function(req, res){
+    var query, query_vars;
+    query = ((req.body.id) ? 'update ' : 'insert ') +
+        ' `orders` SET `order` = ?, `price` = ?, `created_by` = ?, `date_created` = ?'+
+        ((req.body.id) ? ' where `id` = ?;' : ';');
+    query_vars = [req.body.order, req.body.price, req.body.created_by, req.body.date_created];
+    if (req.body.id) {
+        query_vars.push(req.body.id);
+    }
+    con.query(query, query_vars, function (err, q_res) {
+        if (err) throw err;
+        res.send(q_res);
+    });
+});
+
+app.post('/api/deleteOrder', function(req, res) {
+    con.query("delete from `orders` where `id` = ?;", [req.body.id], function(err, q_res){
+        if (err) throw err;
+        res.send(q_res);
+    });
+});
+
+/** PRODUCTS **/
+app.get('/api/getProducts', function(req, res){
+    con.query('select * from `products`', function(err, rows){
+        if (err) throw err;
+        res.send(rows);
+    });
+});
+
+app.post('/api/updateProduct', function(req, res){
+    var query, query_vars;
+    query = ((req.body.id) ? 'update ' : 'insert ') +
+        ' `products` SET `product_name` = ?, `price` = ?, `quantity` = ?, `vendor` = ?'+
+        ((req.body.id) ? ' where `id` = ?;' : ';');
+    query_vars = [req.body.product_name, req.body.price, req.body.quantity, req.body.vendor];
+    if (req.body.id) {
+        query_vars.push(req.body.id);
+    }
+    con.query(query, query_vars, function (err, q_res) {
+        if (err) throw err;
+        res.send(q_res);
+    });
+});
+
+app.post('/api/deleteProduct', function(req, res) {
+    con.query("delete from `products` where `id` = ?;", [req.body.id], function(err, q_res){
+        if (err) throw err;
+        res.send(q_res);
+    });
+});
+
+
+
 
 var port = 8080;
 server.listen(port);
