@@ -14,9 +14,9 @@
         s.hide_register = 0;
 
         s.login = function() {
-            ApiService.get('api/getUser', s.user).then(function(res){
-                if (res.user) {
-                    rs.user = res.user;
+            ApiService.get('users', s.user).then(function(res){
+                if (res[0]) {
+                    rs.user = res[0];
                     localStorage.setItem('user', JSON.stringify(rs.user));
                     $location.path('/projects')
                 } else {
@@ -30,8 +30,8 @@
         };
 
         s.forgotPassword = function() {
-            ApiService.get('api/getUser', s.user).then(function(res){
-                if (res.user) {
+            ApiService.get('users', s.user).then(function(res){
+                if (res[0]) {
                     s.hide_fp = 1;
                     s.alert = {
                         show: 1,
@@ -49,14 +49,8 @@
         };
 
         s.register = function() {
-            ApiService.post('api/saveUser', s.user).then(function(res){
-                if (res.is_error) {
-                    s.alert = {
-                        show: 1,
-                        class: 'alert alert-warning',
-                        message: res.error_message
-                    }
-                } else {
+            ApiService.post('users', s.user).then(function(res){
+               if (res.id) {
                     s.hide_register = 1;
                     s.alert = {
                         show: 1,

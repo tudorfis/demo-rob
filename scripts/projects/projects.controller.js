@@ -35,7 +35,7 @@
         };
 
         s.init = function() {
-            ApiService.get('api/getProjects').then(function(res){
+            ApiService.get('projects').then(function(res){
                 s.projects = res;
             })
         };
@@ -51,9 +51,9 @@
         s.project = project;
 
         s.updateProject = function(project) {
-            ApiService.post('api/updateProject', project).then(function(res){
+            ApiService.post('projects', project).then(function(res){
                 if (!project.id) {
-                    project.id = res.insertId;
+                    project.id = res.id;
                     projectsCtrl.scope().projects.push(project);
                 }
                 s.cancelModal();
@@ -61,8 +61,8 @@
         };
 
         s.deleteProject = function(project) {
-            ApiService.post('api/deleteProject', project).then(function(res){
-                if (res.affectedRows == 1) {
+            ApiService.delete('projects', project).then(function(res){
+                if (res.rows > 0) {
                     angular.forEach(projectsCtrl.scope().projects, function(p, p_id){
                         if (p.id == project.id) {
                             projectsCtrl.scope().projects.splice(p_id, 1);

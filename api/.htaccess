@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /master/
+SetEnv "APPLICATION_ENV" testing
+SetEnv "APPLICATION_DB" demo-rob
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]

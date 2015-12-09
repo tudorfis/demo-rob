@@ -11,7 +11,7 @@
             rs = $rootScope;
 
         /** check user role */
-        if ([1].indexOf(rs.user.role) == -1) {
+        if (rs.user.role == 3 || rs.user.role == 2) {
             window.location.href = "#/";
         }
 
@@ -40,7 +40,7 @@
         };
 
         s.init = function() {
-            ApiService.get('api/getProducts').then(function(res){
+            ApiService.get('products').then(function(res){
                 s.products = res;
             })
         };
@@ -59,9 +59,9 @@
             if (typeof product.date_created == 'object') {
                product.date_created = product.date_created.toISOString().substring(0, 10);
             }
-            ApiService.post('api/updateProduct', product).then(function(res){
+            ApiService.post('products', product).then(function(res){
                 if (!product.id) {
-                    product.id = res.insertId;
+                    product.id = res.id;
                     productsCtrl.scope().products.push(product);
                 }
                 s.cancelModal();
@@ -69,8 +69,8 @@
         };
 
         s.deleteProduct = function(product) {
-            ApiService.post('api/deleteProduct', product).then(function(res){
-                if (res.affectedRows == 1) {
+            ApiService.delete('products', product).then(function(res){
+                if (res.rows > 0) {
                     angular.forEach(productsCtrl.scope().products, function(p, p_id){
                         if (p.id == product.id) {
                             productsCtrl.scope().products.splice(p_id, 1);

@@ -11,7 +11,7 @@
             rs = $rootScope;
 
         /** check user role */
-        if ([1,2].indexOf(rs.user.role) == -1) {
+        if (rs.user.role == 3) {
             window.location.href = "#/";
         }
 
@@ -40,7 +40,7 @@
         };
 
         s.init = function() {
-            ApiService.get('api/getOrders').then(function(res){
+            ApiService.get('orders').then(function(res){
                 s.orders = res;
             })
         };
@@ -59,9 +59,9 @@
             if (typeof order.date_created == 'object') {
                order.date_created = order.date_created.toISOString().substring(0, 10);
             }
-            ApiService.post('api/updateOrder', order).then(function(res){
+            ApiService.post('orders', order).then(function(res){
                 if (!order.id) {
-                    order.id = res.insertId;
+                    order.id = res.id;
                     ordersCtrl.scope().orders.push(order);
                 }
                 s.cancelModal();
@@ -69,8 +69,8 @@
         };
 
         s.deleteOrder = function(order) {
-            ApiService.post('api/deleteOrder', order).then(function(res){
-                if (res.affectedRows == 1) {
+            ApiService.delete('orders', order).then(function(res){
+                if (res.rows > 0) {
                     angular.forEach(ordersCtrl.scope().orders, function(p, p_id){
                         if (p.id == order.id) {
                             ordersCtrl.scope().orders.splice(p_id, 1);
