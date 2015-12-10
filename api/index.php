@@ -1,9 +1,9 @@
 <?php
 
     $hostname = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "demo-rob";
+    $username = "whitsend_client";
+    $password = "DML-studios87%";
+    $database = "whitsend_data";
 
     $mysqli = new mysqli($hostname, $username, $password, $database);
     if (isset($_GET['table'])) {
